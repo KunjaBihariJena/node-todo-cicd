@@ -15,5 +15,5 @@ Run these commands:
 
 or Run by docker compose
 
-testing for github-webhook to jenkins
+testing for github-webhook
 
