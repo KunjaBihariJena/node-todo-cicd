@@ -26,14 +26,16 @@ pipeline{
    }
    stage("push image to dockerhub"){
     steps{
-        withCredentials([usernameColonPassword(credentialsId: 'DockerHub', variable: 'docker')]) {
+        withCredentials([string(credentialsId: 'docker', variable: 'docker1')]) {
+                    {
                     sh """
-                    docker login -u kunjabiharijena -p ${docker} 
+                    docker login -u kunjabiharijena -p ${docker1} 
                     docker tag  app:${BUILD_ID} kunjabiharijena/app:${BUILD_ID} 
                     docker push kunjabiharijena/app:${BUILD_ID} 
                            """
                      }
+        }
     }
    }
-}
+    }
 }
