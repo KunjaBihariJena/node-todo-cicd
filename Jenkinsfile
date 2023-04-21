@@ -9,6 +9,11 @@ pipeline{
             }
             
         }
+    
+   stage("docker image build"){
+    steps{
+        sh 'docker build -t app:${BUILD_ID}'
     }
-   
+   }
+}
 }
