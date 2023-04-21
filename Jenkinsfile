@@ -12,7 +12,7 @@ pipeline{
     
    stage("docker image build"){
     steps{
-        sh 'docker kill $(docker ps -al -q)'
+       // sh 'docker kill $(docker ps -al -q)'
         sh 'docker container prune -f '
         sh ' docker rmi -f $(docker images -q ) '
         sh 'docker build -t app:${BUILD_ID} . '
