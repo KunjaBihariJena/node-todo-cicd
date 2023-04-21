@@ -21,7 +21,10 @@ pipeline{
 
    stage("docker container create and deploy application"){
     steps{
-        sh 'docker run -d -p 8000:8000 -v /app1:/app app:${BUILD_ID}'
+        sh """ 
+        docker volume creat app1
+        docker run -d -p 8000:8000 -v /app1:/app app:${BUILD_ID}
+        """
     }
    }
    stage("push image to dockerhub"){
