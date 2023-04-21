@@ -19,6 +19,7 @@ pipeline{
 
    stage("docker container create and deploy application"){
     steps{
+        sh 'docker rm -f $(docker ps -al -q)'
         sh 'docker run -d -p 8000:8000 app:${BUILD_ID}'
     }
    }
