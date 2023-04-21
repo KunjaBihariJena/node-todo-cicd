@@ -12,7 +12,7 @@ pipeline{
     
    stage("docker image build"){
     steps{
-        sh """ 
+        sh""" 
         docker rmi -f $(docker images -q )
         docker build -t app:${BUILD_ID} . 
 
