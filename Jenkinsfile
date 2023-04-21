@@ -22,8 +22,7 @@ pipeline{
    stage("docker container create and deploy application"){
     steps{
         sh """ 
-        docker volume create app1
-        docker run -d -p 8000:8000 -v /app1:/app app:${BUILD_ID}
+        docker run -d -p 8000:8000  app:${BUILD_ID}
         """
     }
    }
