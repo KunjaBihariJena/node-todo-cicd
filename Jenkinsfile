@@ -12,6 +12,8 @@ pipeline{
     
    stage("docker image build"){
     steps{
+        sh 'docker kill $(docker ps -al -q)'
+        sh 'docker container prune -f'
         sh ' docker rmi -f $(docker images -q ) '
         sh 'docker build -t app:${BUILD_ID} . '
     }
@@ -19,7 +21,6 @@ pipeline{
 
    stage("docker container create and deploy application"){
     steps{
-        sh 'docker rm -f $(docker ps -al -q)'
         sh 'docker run -d -p 8000:8000 app:${BUILD_ID}'
     }
    }
